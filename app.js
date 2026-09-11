@@ -151,6 +151,22 @@ function setupNotes() {
     localStorage.setItem('hub_notes', notesInput.value);
     alert("Notes saved!");
   });
+
+  const notesInputEC = document.getElementById('notes-ec-input');
+  notesInputEC.value = localStorage.getItem('hub_notes_ec') || "";
+
+  document.getElementById('save-notes-ec-btn').addEventListener('click', () => {
+    localStorage.setItem('hub_notes_ec', notesInputEC.value);
+    alert("Notes saved!");
+  });
+
+  const notesInputPersonal = document.getElementById('notes-personal-input');
+  notesInputPersonal.value = localStorage.getItem('hub_notes_personal') || "";
+
+  document.getElementById('save-notes-personal-btn').addEventListener('click', () => {
+    localStorage.setItem('hub_notes_personal', notesInputPersonal.value);
+    alert("Notes saved!");
+  });
 }
 
 // --- POMODORO TIMER ---
