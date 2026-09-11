@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic & Life Hub</title>
+  
+  <link rel="stylesheet" href="styles.css">
+  <!-- FullCalendar 6 Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">🎓 Academic & Life Hub</div>
+  </nav>
+
+  <main class="main-container">
+    <aside class="sidebar">
+      
+      <!-- Calendar Entry Form -->
+      <div class="card">
+        <h2>Add Calendar Item</h2>
+        <form id="item-form">
+          <label>Type</label>
+          <select id="entry-type">
+            <option value="assignment">School Assignment</option>
+            <option value="ec">Extracurricular (EC)</option>
+            <option value="event">Personal Event</option>
+          </select>
+
+          <label>Title</label>
+          <input type="text" id="item-title" placeholder="e.g., Math Homework" required>
+
+          <div id="datetime-fields">
+            <label>Due Date & Time</label>
+            <input type="datetime-local" id="item-datetime" required>
+          </div>
+
+          <div id="date-only-fields" style="display: none;">
+            <label>Event Date</label>
+            <input type="date" id="item-date">
+          </div>
+
+          <button type="submit" class="btn btn-success">Save to Calendar</button>
+        </form>
+      </div>
+
+      <!-- Focus Timer -->
+      <div class="card">
+        <h2>Study Timer (Pomodoro)</h2>
+        <div class="timer-display" id="timer">25:00</div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button id="timer-start" class="btn btn-primary" style="flex: 1;">Start</button>
+          <button id="timer-add-5" class="btn btn-success" style="flex: 1;">+5 Min</button>
+          <button id="timer-reset" class="btn btn-secondary" style="flex: 1;">Reset</button>
+        </div>
+      </div>
+
+    </aside>
+
+    <section class="content-section">
+      
+      <!-- Calendar View -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Main Calendar</button>
+        <button class="filter-btn" data-filter="assignment">School</button>
+        <button class="filter-btn" data-filter="ec">EC</button>
+        <button class="filter-btn" data-filter="event">Personal</button>
+      </div>
+
+      <div id="calendar-container">
+        <div id="calendar"></div>
+      </div>
+
+      <!-- Quick Tasks & Notes -->
+      <div style="display: flex; gap: 1.5rem;">
+        
+        <!-- Task List -->
+        <div class="card" style="flex: 1;">
+          <h2>To-Do List</h2>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="text" id="task-input" placeholder="New task..." style="margin: 0;">
+            <button id="add-task-btn" class="btn btn-success" style="width: auto; margin: 0;">Add</button>
+          </div>
+          <div id="task-list"></div>
+        </div>
+
+        <!-- Sticky Notes -->
+        <div class="card" style="flex: 1;">
+          <h2>Quick Notes</h2>
+          <textarea id="notes-input" rows="4" placeholder="Jot down quick thoughts..."></textarea>
+          <button id="save-notes-btn" class="btn btn-primary">Save Notes</button>
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
